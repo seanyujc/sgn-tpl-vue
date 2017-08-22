@@ -35,9 +35,9 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-      vue: 'vue/dist/vue.js'
-    },
-    extensions: ['.ts', '.tsx', '.js']
+			vue: 'vue/dist/vue.js'
+		},
+		extensions: ['.ts', '.tsx', '.js']
 	},
 	devtool: 'inline-source-map',
 	plugins: [
@@ -54,7 +54,7 @@ module.exports = {
 					happyPackMode: true
 				}
 			}]
-    }),
-    new ForkTsCheckerWebpackPlugin()
+		}),
+		new ForkTsCheckerWebpackPlugin()
 	]
 }

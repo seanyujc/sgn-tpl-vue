@@ -1,9 +1,10 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import HomeComponent from "./pages/home";
+import HomePage from "./pages/home";
+
 Vue.use(VueRouter);
 const routes: RouteConfig[] = [
-  { path: "/home", component: HomeComponent }
+  { path: "/home", component: HomePage }
 ];
 
 const router = new VueRouter({

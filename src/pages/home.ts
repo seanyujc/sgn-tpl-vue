@@ -4,9 +4,9 @@ import Component from "vue-class-component";
 import Common from "../core/common";
 
 @Component({
-  template: "<div><ul><li>{{today}}</li><li>{{tomorrow}}</li></ul><button @click='show()'>click</button></div>",
+  template: `<div><ul><li>{{today}}</li><li>{{tomorrow}}</li></ul><button @click="show()">click</button></div>`,
 })
-export default class HomeComponent extends Vue {
+export default class HomePage extends Vue {
   today: string = moment().format("YYYY-MM-DD");
 
   show() {

@@ -8,7 +8,7 @@ import Component from "vue-class-component";
 </header>`,
     props: {
         title: String,
-    }
+    },
 })
 export default class HeaderBar extends Vue {
 

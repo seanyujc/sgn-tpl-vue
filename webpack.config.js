@@ -24,23 +24,28 @@ module.exports = {
 			//   }
 			// }
 			{
-				test: /\.tsx?$/,
-				exclude: /node_modules/,
-				loader: 'happypack/loader?id=ts'
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]__[local]__[hash:base64:5]',
-            }
-          },
-          'sass-loader']
-      }
+				test: /\.ts(x?)$/,
+				use: [{
+					loader: 'awesome-typescript-loader',
+					options: {
+						useBabel: true,
+						useCache: true
+					}
+				}]
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+							localIdentName: '[name]__[local]__[hash:base64:5]',
+						}
+					},
+					'sass-loader']
+			}
 		]
 	},
 	devServer: {

@@ -1,9 +1,11 @@
 import Vue from "vue";
 import Component from "vue-class-component";
+import HeaderBar from "../components/headerBar";
 import Common from "../core/common";
 
 @Component({
   template: `<div>
+  <header-bar title="登陆"></header-bar>
   <form action="">
     <div class="form-group">
       <label for="loginName">登录名</label>
@@ -15,6 +17,7 @@ import Common from "../core/common";
     </div>
   </form>
 </div>`,
+  components: { HeaderBar },
 })
 export default class LoginPage extends Vue {
 

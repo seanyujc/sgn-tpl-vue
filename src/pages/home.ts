@@ -1,10 +1,17 @@
 import moment from "moment";
 import Vue from "vue";
 import Component from "vue-class-component";
+import HeaderBar from "../components/headerBar";
 import Common from "../core/common";
 
 @Component({
-  template: `<div><ul><li>{{today}}</li><li>{{tomorrow}}</li></ul><button @click="show()">click</button></div>`,
+  template: `<div>
+  <header-bar title="home">xxx</header-bar>
+  <ul>
+    <li>{{today}}</li>
+    <li>{{tomorrow}}</li>
+  </ul><button @click="show()">click</button></div>`,
+  components: { HeaderBar },
 })
 export default class HomePage extends Vue {
   today: string = moment().format("YYYY-MM-DD");

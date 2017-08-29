@@ -56,10 +56,11 @@ export default class Common implements ICommon {
             if (api.indexOf(":") !== -1) {
                 url = "//{DOMAIN}{HOST}{API}";
                 const path = api.split(":");
-                path[0] = this.common.trim(path[0]);
-                path[1] = this.common.trim(path[1]);
+                path[0] = this.trim(path[0]);
+                path[1] = this.trim(path[1]);
                 const host: IHost = this.apiConfig.hosts[path[0]];
-                const _DOMAIN = host.domain ? host.domain : this.domain;
+                const domain = host && host.domain ? host.domain : this.domain;
+                url = url.replace(/\{DOMAIN}/, domain).replace(/\{HOST}/, host.dir).replace(/\{API}/, path[1]);
             } else {
                 url = api;
             }

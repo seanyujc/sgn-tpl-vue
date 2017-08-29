@@ -1,7 +1,11 @@
 const path = require("path");
+var webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HappyPack = require('happypack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+var NODE_ENV = process.env.NODE_ENV || "PRO";
+var publicPath = process.env.PUBLIC_PATH || '/flight/';
 
 module.exports = {
 	entry: {
@@ -49,7 +53,8 @@ module.exports = {
 		]
 	},
 	devServer: {
-		contentBase: path.join(__dirname, "dist")
+		contentBase: path.join(__dirname, "dist"),
+		port: 8002,
 	},
 	resolve: {
 		alias: {
@@ -73,6 +78,10 @@ module.exports = {
 				}
 			}]
 		}),
-		new ForkTsCheckerWebpackPlugin()
+		new ForkTsCheckerWebpackPlugin(),
+		new webpack.DefinePlugin({
+			'NODE_ENV': JSON.stringify(NODE_ENV),
+			'PUBLIC_PATH': JSON.stringify(publicPath)
+		}),
 	]
 }

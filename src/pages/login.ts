@@ -2,6 +2,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import HeaderBar from "../components/headerBar";
 import Common from "../core/common";
+import { MissionInfo } from "../core/domain";
 import Person, { IPerson } from "../core/services/person";
 
 @Component({
@@ -25,11 +26,13 @@ export default class LoginPage extends Vue {
   person: IPerson = new Person();
   loginName: string = "";
   toLogin() {
-    this.person.getUserKey(+this.loginName).then((res) => {
-      console.log(res);
-    });
-    // this.person.fetchPlanList().then((res) => {
+    // this.person.getUserKey(+this.loginName).then((res) => {
     //   console.log(res);
     // });
+    this.person.fetchMissionhallList<{ msg: string; code: number; data: MissionInfo[] }>().then((res) => {
+      console.log(res.data);
+    }).catch((reason) => {
+      console.log(reason);
+    });
   }
 }

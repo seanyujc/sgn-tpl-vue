@@ -10,7 +10,7 @@ const apiConfig: IApiConfig = {
 
     },
     get: {
-        fetchPlanList: "promotor:/app/plan/list", // ?openId=ofq36s-R8ZnbZjZvhTa9sSWP-51k&status=1
+        fetchMissionhallList: "promotor:/app/missionhall/list", // ?openId=ofq36s-R8ZnbZjZvhTa9sSWP-51k
     },
 };
 export default apiConfig;

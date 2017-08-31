@@ -9,7 +9,7 @@ var publicPath = process.env.PUBLIC_PATH || '/flight/';
 
 module.exports = {
 	entry: {
-		app: "./src/index.ts",
+		app: ["bootstrap-loader", "./src/index.ts"],
 	},
 	output: {
 		filename: "[name].js",

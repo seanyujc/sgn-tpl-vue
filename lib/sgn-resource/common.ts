@@ -15,8 +15,7 @@ export interface ICommon {
     dealPath(apiKey: string, method: string): string;
 }
 
-export default class Common implements ICommon {
-    private common: ICommon;
+export class Common implements ICommon {
     private env: Env;
     private debug: boolean;
     private protocol: string;

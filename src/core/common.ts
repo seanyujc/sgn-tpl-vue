@@ -23,4 +23,26 @@ export default class Common {
   static getPublicPath() {
     return PUBLIC_PATH;
   }
+
+  static merge(left: any[], right: any[]) {
+    const result = [];
+    while (left.length > 0 && right.length > 0) {
+      if (left[0] < right[0]) {
+        result.push(left.shift());
+      } else {
+        result.push(right.shift());
+      }
+    }
+    return result.concat(left).concat(right);
+  }
+
+  static mergeSort(items: any[]) {
+    if (items.length === 1) {
+      return items;
+    }
+    const middle = Math.floor(items.length / 2);
+    const left = items.slice(0, middle);
+    const right = items.slice(middle);
+    return this.merge(this.mergeSort(left), this.mergeSort(right));
+  }
 }

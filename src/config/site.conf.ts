@@ -1,15 +1,14 @@
 import {Env, IServerConfig } from "../../lib/sgn-resource";
 import Common from "../core/common";
 
-const serverConfig: IServerConfig = {
+export const serverConfig: IServerConfig = {
     env: Common.getEnv(),
     debug: false,
     protocol: window.location.protocol,
-    publicPath: "",
+    publicPath: Common.getPublicPath(),
     sites: {},
 };
-serverConfig.sites[Env.DEV] = { local: "dh5.lianbi.com.cn", remote: "api.duileme.cn", appID: "xxx" };
-serverConfig.sites[Env.TEST] = { local: "dh5.lianbi.com.cn", remote: "172.16.103.211", appID: "xxx" };
-serverConfig.sites[Env.PRO] = { local: "dh5.lianbi.com.cn", remote: "172.16.103.211", appID: "xxx" };
-
-export default serverConfig;
+// 开发、测试、生产环境配置 remote: 远端API地址，local和appID在微信中调用jsapi使用。
+serverConfig.sites[Env.DEV] = { remote: "172.16.103.211", local: "dh5.lianbi.com.cn", appID: "xxx" };
+serverConfig.sites[Env.TEST] = { remote: "172.16.103.211", local: "dh5.lianbi.com.cn", appID: "xxx" };
+serverConfig.sites[Env.PRO] = { remote: "172.16.103.211", local: "dh5.lianbi.com.cn", appID: "xxx" };

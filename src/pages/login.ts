@@ -3,7 +3,7 @@ import Component from "vue-class-component";
 import HeaderBar from "../components/headerBar";
 import Common from "../core/common";
 import { MissionInfo } from "../core/domain";
-import Person, { IPerson } from "../core/services/person";
+import PersonService, { IPersonService } from "../core/services/person.serv";
 
 @Component({
   template: `<div>
@@ -23,16 +23,12 @@ import Person, { IPerson } from "../core/services/person";
   components: { HeaderBar },
 })
 export default class LoginPage extends Vue {
-  person: IPerson = new Person();
+  person: IPersonService = new PersonService();
   loginName: string = "";
   toLogin() {
     // this.person.getUserKey(+this.loginName).then((res) => {
     //   console.log(res);
     // });
-    this.person.fetchMissionhallList<{ msg: string; code: number; data: MissionInfo[] }>().then((res) => {
-      console.log(res.data);
-    }).catch((reason) => {
-      console.log(reason);
-    });
+    
   }
 }

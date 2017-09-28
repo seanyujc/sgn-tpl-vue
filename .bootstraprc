@@ -83,7 +83,7 @@ styles:
 ### Bootstrap scripts
 scripts:
   transition: false
-  alert: false
+  alert: true
   button: false
   carousel: false
   collapse: false

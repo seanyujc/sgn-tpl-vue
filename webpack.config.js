@@ -9,7 +9,7 @@ var publicPath = process.env.PUBLIC_PATH || '/flight/';
 
 module.exports = {
 	entry: {
-		app: ["bootstrap-loader", "./src/index.ts"],
+		app: ["./src/index.ts"],
 	},
 	output: {
 		filename: "[name].js",
@@ -66,7 +66,10 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			filename: "index.html",
-			template: path.join(__dirname, 'src', 'index.html')
+			template: path.join(__dirname, 'src', 'index.html'),
+			basePath: publicPath,
+			dllScripts: ['dll/styles-dll'],
+			dllStyles: ['bootstrap']
 		}),
 		new HappyPack({
 			id: 'ts',

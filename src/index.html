@@ -5,6 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>vue</title>
+    <% for(let o of htmlWebpackPlugin.options.dllStyles){ %>
+        <link rel="stylesheet" href="./<%= o %>.css">
+        <% } %>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107057700-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-107057700-1');
+</script>
+
 </head>
 
 <body>
@@ -29,6 +42,9 @@
             recalc();
         })(document, window);
     </script>
+    <% for(var o of htmlWebpackPlugin.options.dllScripts ){ %>
+    <script src="<%= htmlWebpackPlugin.options.basePath + o %>.js"></script>
+    <% } %>
 </body>
 
 </html>

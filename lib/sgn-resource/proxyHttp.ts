@@ -5,8 +5,17 @@ import { Env, IApiConfig, IHost, IServerConfig, ISite } from "./config";
 
 export interface IProxyHttp {
   SuccessCode: string;
-  // new (apiConfig: IApiConfig, serverConfig: IServerConfig);
+  /**
+   * 代理get请求
+   * @param api config定义的接口名
+   * @param params 请求参数
+   */
   get<T, K>(api: string, params: K): Promise<T>;
+  /**
+   * 代理post请求
+   * @param api config定义的接口
+   * @param params 请求参数
+   */
   post<T, K>(api: string, params: K): Promise<T>;
   form<T>(api: string, form: FormData): Promise<T>;
 }

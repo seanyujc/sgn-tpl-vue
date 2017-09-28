@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cpassets": "cp ./src/index.html ./dist/",
+    "clean": "rimraf dist && mkdirp dist ./dist ./dist/assets ./dist/dll",
+    "cpdll": "ncp ./dll/styles-dll.js ./dist/dll/styles-dll.js && ncp ./dll/bootstrap.css ./dist/bootstrap.css && ncp ./dll/assets/ ./dist/assets/",
+    "cpassets": "ncp ./src/index.html ./dist/",
     "dev": "cross-env NODE_ENV=DEV cross-env PUBLIC_PATH=/ webpack-dev-server --progress",
-    "build": "webpack && npm run cpassets",
+    "build": "webpack",
+    "postbuild": "npm run cpdll && npm run cpassets",
     "prebuild:dll": "rimraf dll",
     "build:dll": "webpack --config=webpack.dll.config.js",
+    "postbuild:dll": "npm run cpdll",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -22,6 +26,7 @@
     "vue-router": "^2.7.0"
   },
   "devDependencies": {
+    "@types/bootstrap": "^3.3.36",
     "awesome-typescript-loader": "^3.2.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

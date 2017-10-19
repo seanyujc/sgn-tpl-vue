@@ -13,7 +13,7 @@ class FlightService implements IFlightService {
   proxyHttp: IProxyHttp;
 
   constructor() {
-    this.proxyHttp = SGNFactory.ProxyHttpCreator(apiConfig, serverConfig);
+    this.proxyHttp = SGNFactory.createProxyHttp(apiConfig, serverConfig);
     this.proxyHttp.SuccessCode = "0";
   }
 

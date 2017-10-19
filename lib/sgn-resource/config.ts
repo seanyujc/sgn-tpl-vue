@@ -48,6 +48,7 @@ export interface IServerConfig {
     protocol: string;
     publicPath: string;
     sites: ISites;
+    successCode: string;
     wXJsSign?: string;
     wXOAuth?: string;
     jsApiList?: string[];

@@ -1,6 +1,6 @@
 import { BaseInfo } from "./baseInfo";
 
-export class MissionInfo extends BaseInfo {
+export class MissionInfo {
   planName: string;
   completed: number;
   total: number;

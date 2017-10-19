@@ -1,12 +1,12 @@
 import { IApiConfig, IHosts } from "../../lib/sgn-resource";
 export const apiConfig: IApiConfig = {
     hosts: {
-        tps: { dir: "/tps" },
+        tps: { dir: "" },
         promotor: { dir: "/promotor", domain: "api.duileme.cn" },
     },
     post: {
         // 5.1	获取用户key接口
-        getUserKey: "tps:/user/getUserKey", // ? sourceCode=&sourceUserId=&userName=&headUrl=&sex=&phone=&email=
+        getUserKey: "tps:/users", // ? sourceCode=&sourceUserId=&userName=&headUrl=&sex=&phone=&email=
         // 5.4	城市列表查询接口
         fetchAirports: "tps:/city/list", // ?sourceCode=&userKey=
         // 5.5	航班查询接口

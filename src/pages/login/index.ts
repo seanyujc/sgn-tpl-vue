@@ -13,9 +13,9 @@ export default class LoginPage extends Vue {
   person: IPersonService = new PersonService();
   loginName: string = "";
   toLogin() {
-    // this.person.getUserKey(+this.loginName).then((res) => {
-    //   console.log(res);
-    // });
+    this.person.getUserKey(+this.loginName).then((res) => {
+      console.log(res);
+    });
     
   }
 }

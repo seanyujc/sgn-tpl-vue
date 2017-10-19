@@ -3,6 +3,10 @@ import qs from "qs";
 import { Common, ICommon } from "./common";
 import { Env, IApiConfig, IHost, IServerConfig, ISite } from "./config";
 
+export interface IProxyHttpConstructor {
+  new(common: ICommon): IProxyHttp;
+}
+
 export interface IProxyHttp {
   SuccessCode: string;
   /**
@@ -20,12 +24,15 @@ export interface IProxyHttp {
   form<T>(api: string, form: FormData): Promise<T>;
 }
 
+export function createProxyHttp(ctor: IProxyHttpConstructor, common: ICommon): IProxyHttp {
+  return new ctor(common);
+}
+
 export class ProxyHttp implements IProxyHttp {
 
   private successCode: string;
-
   constructor(private common: ICommon) {
-    this.successCode = "000000";
+    this.successCode = common.successCode;
   }
 
   get<T, K>(api: string, params: K): Promise<T> {

@@ -14,8 +14,7 @@ class PersonService implements IPersonService {
   proxyHttp: IProxyHttp;
 
   constructor() {
-    this.proxyHttp = SGNFactory.ProxyHttpCreator(apiConfig, serverConfig);
-    this.proxyHttp.SuccessCode = "0";
+    this.proxyHttp = SGNFactory.createProxyHttp(apiConfig, serverConfig);
   }
 
   uploadPics(files: any[]): Promise<any> {

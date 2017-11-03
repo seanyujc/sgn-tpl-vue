@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 const routes: RouteConfig[] = [
   { path: "/home", component: HomePage },
   { path: "/login", component: LoginPage },
+  { path: "*", component: HomePage },
 ];
 
 const router = new VueRouter({

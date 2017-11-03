@@ -6,6 +6,7 @@ import { MissionInfo } from "../../core/domain";
 import PersonService, { IPersonService } from "../../core/services/person.serv";
 
 @Component({
+  // tslint:disable-next-line:no-submodule-imports
   template: require("!!raw-loader!./login.html"),
   components: { HeaderBar },
 })

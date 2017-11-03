@@ -4,6 +4,6 @@ import Component from "vue-class-component";
 @Component({
     template: ``,
 })
-export default class HeaderBar extends Vue {
+export default class Datepicker extends Vue {
 
 }

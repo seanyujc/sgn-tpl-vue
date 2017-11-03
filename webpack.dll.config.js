@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -6,37 +6,44 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
-    styles: ["bootstrap-loader"]
+    lib: ['jquery'],
+    styles: ['bootstrap-loader']
   },
   output: {
-    path: path.resolve(__dirname, "dll/"),
-    filename: "[name]-dll.js",
+    path: path.resolve(__dirname, 'dll/dll/'),
+    filename: '[name]-dll.js',
     library: '[name]_lib'
   },
-  module: {
-    rules: [
-      {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
-        use: ['file-loader?name=assets/fonts/[name].[ext]']
-      }
-    ]
-  },
   resolve: {
-    extensions: ["*", '.js', '.scss'],
+    extensions: ['*', '.js', '.scss'],
     modules: [path.resolve(__dirname, 'node_modules')]
   },
   plugins: [
     new UglifyJSPlugin({
-      sourceMap: "nosources-source-map"
+      sourceMap: 'source-map'
     }),
     new webpack.DllPlugin({
       path: path.resolve(__dirname, 'dll/[name]-manifest.json'),
       name: '[name]_lib'
     }),
-    new ExtractTextPlugin('bootstrap.css'),
+    new ExtractTextPlugin('../styles/bootstrap.css'),
     new webpack.LoaderOptionsPlugin({
       postcss: [autoprefixer],
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
+        use: [{ loader: 'imports-loader?jQuery=jquery' }]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: [{
+          loader: 'file-loader?name=../assets/fonts/[name].[ext]'
+        }]
+      }
+    ]
+  },
 
 }

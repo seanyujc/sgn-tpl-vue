@@ -17,8 +17,8 @@ class FlightService implements IFlightService {
     this.proxyHttp.SuccessCode = "0";
   }
 
-  fetchMissionhallList<T>(): Promise<T> {
-    return this.proxyHttp.get<T, { openId: string; }>("fetchMissionhallList",
+  fetchMissionhallList(): Promise<any> {
+    return this.proxyHttp.get("fetchMissionhallList",
       { openId: "ofq36s-R8ZnbZjZvhTa9sSWP-51k" });
   }
 

@@ -54,7 +54,7 @@ module.exports = {
 	},
 	devServer: {
 		contentBase: path.join(__dirname, "dist"),
-		port: 8002,
+		port: 8003,
 	},
 	resolve: {
 		alias: {

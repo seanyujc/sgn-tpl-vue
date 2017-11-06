@@ -8,6 +8,7 @@ export const serverConfig: IServerConfig = {
     publicPath: Common.getPublicPath(),
     successCode: "000000",
     sites: {},
+    isMock: true,
 };
 // 开发、测试、生产环境配置 remote: 远端API地址，local和appID在微信中调用jsapi使用。
 serverConfig.sites[Env.DEV] = { remote: "127.0.0.1:3001", local: "dh5.lianbi.com.cn", appID: "xxx" };

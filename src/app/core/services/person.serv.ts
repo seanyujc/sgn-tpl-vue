@@ -1,20 +1,36 @@
-import { IProxyHttp, SGNFactory } from "../../../lib/sgn-resource";
-import { apiConfig, serverConfig } from "../../config";
+import { IProxyHttp } from "../../../lib/sgn-resource";
 import { MissionInfo } from "../domain";
+import { Services } from "../factory";
 
 export interface IPersonService {
   uploadPics(files: any[]): Promise<any>;
   /**
    * 获取userKey
    */
-  getUserKey(userId: number): Promise<any>;
+  login(mobile: string, pwd: string): Promise<any>;
+  getUserInfo(): Promise<any>;
 }
 
-class PersonService implements IPersonService {
+interface IPersonServiceConstructor {
+  new(): IPersonService;
+}
+
+export function createPersonService(ctor: IPersonServiceConstructor): IPersonService {
+  return new ctor();
+}
+
+export class PersonService implements IPersonService {
   proxyHttp: IProxyHttp;
 
   constructor() {
-    this.proxyHttp = SGNFactory.createProxyHttp(apiConfig, serverConfig);
+    this.proxyHttp = Services.createProxyHttp();
+  }
+
+  login(mobile: string, pwd: string): Promise<any> {
+    return this.proxyHttp.post("login", { mobile, pwd });
+  }
+  getUserInfo(): Promise<any> {
+    throw new Error("Method not implemented.");
   }
 
   uploadPics(files: any[]): Promise<any> {
@@ -28,20 +44,4 @@ class PersonService implements IPersonService {
     return this.proxyHttp.form("uploadPics", formData);
   }
 
-  getUserKey(userId: number) {
-    return this.proxyHttp.post<{ msg: string; code: string; userKey: string }, any>("getUserKey", {
-      sourceCode: "2",
-      sourceUserId: userId,
-      // sourceUserId: 69,
-      userName: "jcyu",
-      headUrl: encodeURIComponent("http://ucenter.51cto.com/avatar.php?uid=1383716&size=middle"),
-      sex: "1",
-      phone: "18623233333",
-      email: "exxx@lb.com",
-      registerTime: "2016-10-01 22:00:00",
-    });
-  }
-
 }
-
-export default PersonService;

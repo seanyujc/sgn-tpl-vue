@@ -36,7 +36,7 @@ export default class Common {
     return result.concat(left).concat(right);
   }
 
-  static mergeSort(items: any[]) {
+  static mergeSort(items: any[]): any[] {
     if (items.length === 1) {
       return items;
     }

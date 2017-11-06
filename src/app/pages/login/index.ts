@@ -3,20 +3,22 @@ import Component from "vue-class-component";
 import HeaderBar from "../../components/headerBar";
 import Common from "../../core/common";
 import { MissionInfo } from "../../core/domain";
-import PersonService, { IPersonService } from "../../core/services/person.serv";
+import { Services } from "../../core/factory";
+import { IPersonService } from "../../core/services/person.serv";
+import router from "../../index.router";
 
 @Component({
-  // tslint:disable-next-line:no-submodule-imports
   template: require("!!raw-loader!./login.html"),
   components: { HeaderBar },
 })
 export default class LoginPage extends Vue {
-  person: IPersonService = new PersonService();
+  person: IPersonService = Services.createPersonService();
   loginName: string = "";
+  passwd: string = "";
   toLogin() {
-    this.person.getUserKey(+this.loginName).then((res) => {
+    this.person.login(this.loginName, this.passwd).then((res) => {
       console.log(res);
+      router.push("home");
     });
-    
   }
 }

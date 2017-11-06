@@ -6,7 +6,7 @@ import HeaderBar from "../../components/headerBar";
 import Common from "../../core/common";
 
 @Component({
-  template: require("!!raw-loader!./home.html"),
+  template: require("./home.html"),
   // components: { HeaderBar },
 })
 export default class HomePage extends Vue {

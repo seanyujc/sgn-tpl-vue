@@ -1,15 +1,15 @@
 import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
+import VueRouter, { RouteConfig } from "../lib/vue-router";
 import HomePage from "./pages/home";
 import LoginPage from "./pages/login";
 
-// const HomePage = () => import("./pages/home");
+import {homePagePreloading} from "./pages/factory";
 
 Vue.use(VueRouter);
 const routes: RouteConfig[] = [
-  { path: "/home", component: HomePage },
+  { path: "/home", component: homePagePreloading },
   { path: "/login", component: LoginPage },
-  { path: "*", component: HomePage },
+  { path: "*", component: homePagePreloading },
 ];
 
 const router = new VueRouter({

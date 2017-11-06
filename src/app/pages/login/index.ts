@@ -8,7 +8,7 @@ import { IPersonService } from "../../core/services/person.serv";
 import router from "../../index.router";
 
 @Component({
-  template: require("!!raw-loader!./login.html"),
+  template: require("./login.html"),
   components: { HeaderBar },
 })
 export default class LoginPage extends Vue {
@@ -17,7 +17,7 @@ export default class LoginPage extends Vue {
   passwd: string = "";
   toLogin() {
     this.person.login(this.loginName, this.passwd).then((res) => {
-      console.log(res);
+      console.debug(res);
       router.push("home");
     });
   }

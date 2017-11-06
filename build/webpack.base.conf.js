@@ -40,6 +40,12 @@ module.exports = {
         use: 'source-map-loader'
       },
       {
+        test: /\.html$/,
+        use: [
+          'raw-loader'
+        ]
+      },
+      {
         test: /\.(png|jpg|gif)$/,
         use: [
           'url-loader?name=assets/images/[name]_[hash].[ext]&limit=500'

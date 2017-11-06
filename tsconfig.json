@@ -1,21 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES5",
     "sourceMap": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "module": "es2015",
     "moduleResolution": "node",
-    "typeRoots": [
-      "node_modules/@types/"
-    ],
     "types": [
       "axios-mock-adapter",
       "bootstrap",
       "jquery",
       "node",
-      "qs"
+      "qs",
+      "webpack-env"
     ],
     "lib": [
       "dom",

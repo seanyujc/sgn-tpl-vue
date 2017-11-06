@@ -3,7 +3,7 @@ var NODE_ENV = process.env.NODE_ENV || 'DEV'
 
 const htmlWebpackPluginOption = {
   filename: 'index.html',
-  template: path.join(__dirname, '../../src/app', 'index-tpl.html'),
+  template: path.join(__dirname, '../../src/app', 'index-tpl.htm'),
   basePath: '',
   dlls: ['dll/lib-dll', 'dll/styles-dll'],
   styles: ['styles/bootstrap']
@@ -31,10 +31,10 @@ const dev = {
 build.htmlWebpackPluginOption.basePath = build.assetsPublicPath;
 dev.htmlWebpackPluginOption.basePath = dev.assetsPublicPath;
 
-if(NODE_ENV==="DEV"){
-  build.assetsPublicPath = "/vue/"
-  build.htmlWebpackPluginOption.basePath = "/vue/"
-}
+// if(NODE_ENV==="DEV"){
+//   build.assetsPublicPath = "/vue/"
+//   build.htmlWebpackPluginOption.basePath = "/vue/"
+// }
 
 module.exports = {
   build,

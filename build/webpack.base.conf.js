@@ -15,7 +15,7 @@ module.exports = {
     alias: {
       vue: 'vue/dist/vue.js',
       jquery: "jquery/dist/jquery"
-		},
+    },
     extensions: ['.js', '.ts', '.tsx'],
     modules: [path.resolve(__dirname, '../node_modules')]
   },
@@ -53,12 +53,32 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            'happypack/loader?id=scss'
-          ]
-        })
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              // modules: true,
+              localIdentName: '[local]',
+            }
+          },
+          'sass-loader']
       },
+      // {
+      //   test: /\.scss$/,
+      //   use: ExtractTextPlugin.extract({
+      //     fallback: 'style-loader',
+      //     //resolve-url-loader may be chained before sass-loader if necessary
+      //     use: [{
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: true,
+      //         localIdentName: '[name]__[local]__[hash:base64:5]',
+      //       }
+      //     },
+      //       'autoprefixer-loader?{browsers: ["last 2 versions", "ie 8", "ie 9"]}', 'sass-loader']
+      //   })
+      // },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [{

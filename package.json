@@ -45,6 +45,7 @@
     "@types/node": "8.0.26",
     "@types/qs": "^6.5.1",
     "@types/webpack-env": "1.13.0",
+    "autoprefixer-loader": "^3.2.0",
     "awesome-typescript-loader": "^3.2.3",
     "axios-mock-adapter": "^1.9.0",
     "babel-core": "^6.26.0",

@@ -1,6 +1,7 @@
-<div>
+<div class="page-module loginPageContainor">
   <header-bar title="登陆"></header-bar>
   <form @submit.prevent="toLogin">
+    <div>{{LoginName}}</div>
     <div class="form-group">
       <label for="loginName">登录名</label>
       <input class="form-control" id="loginName" type="text" v-model="loginName" placeholder="请输入登录名">

@@ -1,6 +1,6 @@
 import { IProxyHttp } from "../../../lib/sgn-resource";
 import { MissionInfo } from "../domain";
-import { Services } from "../factory";
+import { Services } from "../factory.serv";
 
 export interface IPersonService {
   uploadPics(files: any[]): Promise<any>;

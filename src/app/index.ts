@@ -7,8 +7,15 @@ import "./index.component";
 import router from "./index.router";
 import "./styles/common.scss";
 require("bootstrap-loader");
+import Component from "vue-class-component";
 
 SGVFactory.createConfigAdapter(apiConfig, serverConfig, mockData);
+
+Component.registerHooks([
+  "beforeRouteEnter",
+  "beforeRouteLeave",
+  "beforeRouteUpdate",
+]);
 
 const vm = new Vue({
   router,

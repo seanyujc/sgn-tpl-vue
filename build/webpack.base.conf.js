@@ -5,7 +5,7 @@ const HappyPack = require('happypack')
 
 module.exports = {
   entry: {
-    app: './src/app/index.bootstrap'
+    app: ['babel-polyfill', './src/app/index.bootstrap']
   },
   output: {
     filename: 'js/[name]_[hash].js',
@@ -115,7 +115,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-      "window.jQuery": "jquery",
+      "window.jQuery": "jquery"
     })
   ]
 }

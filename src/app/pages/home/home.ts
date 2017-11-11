@@ -9,9 +9,19 @@ import Common from "../../core/common";
 @Component({
   template: require("./home.html"),
   // components: { HeaderBar },
+  mounted: () => {
+    // const file = new File([""], "file.txt");
+    const file: any = document.getElementById("file");
+    console.log(file);
+  },
 })
 export default class HomePage extends Vue {
+
   today: string = moment().format("YYYY-MM-DD");
+  // constructor() {
+  //   super();
+  //   const file = new File([""], "file.txt");
+  // }
 
   show() {
     const msg = this.today;
@@ -23,4 +33,5 @@ export default class HomePage extends Vue {
     const t = moment().add(7, "days");
     return t.format("YYYY-MM-DD");
   }
+
 }

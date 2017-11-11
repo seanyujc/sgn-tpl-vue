@@ -18,7 +18,8 @@
       "jquery",
       "node",
       "qs",
-      "webpack-env"
+      "webpack-env",
+      "promise-polyfill"
     ],
     "outDir": "./bundles",
     "lib": [

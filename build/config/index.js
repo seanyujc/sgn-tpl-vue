@@ -6,7 +6,14 @@ const htmlWebpackPluginOption = {
   template: path.join(__dirname, '../../src/app', 'index-tpl.htm'),
   basePath: '',
   dlls: ['dll/lib-dll', 'dll/styles-dll'],
-  styles: ['styles/bootstrap']
+  styles: ['styles/bootstrap'],
+  NODE_ENV: NODE_ENV,
+  siteInfo: {
+    DEV: { local: "172.16.106.110:8001", remote: "172.16.106.110:8080" },
+    TEST: { local: "bsm.haveoo.com", remote: "bsm.haveoo.com" },
+    UAT: { local: "bsm-uat.lincomb.com", remote: "bsm-uat.lincomb.com" },
+    PRO: { local: "bsm.lincomb.com", remote: "bsm.lincomb.com" },
+  }
 }
 
 const build = {
@@ -15,7 +22,8 @@ const build = {
   assetsSubDirectory: 'static',
   assetsPublicPath: '/bsm/',
   productionSourceMap: true,
-  htmlWebpackPluginOption
+  htmlWebpackPluginOption,
+  siteInfo: htmlWebpackPluginOption.siteInfo
 }
 
 const dev = {

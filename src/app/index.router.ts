@@ -1,14 +1,13 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "../lib/vue-router";
-import LoginPage from "./pages/login";
-
-import {homePagePreloading} from "./pages/factory.page";
+import * as PageFactory from "./pages/factory.page";
 
 Vue.use(VueRouter);
 const routes: RouteConfig[] = [
-  { path: "/home", component: homePagePreloading },
-  { path: "/login", component: LoginPage },
-  { path: "*", component: homePagePreloading },
+  // SGV-BUILD-PAGE-ROUTER-CONFIG # NOT DELETE
+  { path: "/login", component: PageFactory.loginPagePreloading },
+  { path: "/home", component: PageFactory.homePagePreloading },
+  { path: "*", component: PageFactory.homePagePreloading },
 ];
 
 const router = new VueRouter({

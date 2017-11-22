@@ -1,15 +1,25 @@
 <div class="page-module loginPageContainor">
-  <header-bar title="登陆"></header-bar>
-  <form @submit.prevent="toLogin">
-    <div>{{LoginName}}</div>
-    <div class="form-group">
-      <label for="loginName">登录名</label>
-      <input class="form-control" id="loginName" type="text" v-model="loginName" placeholder="请输入登录名">
-    </div>
-    <div class="from-group">
-      <label for="passwd">密　码</label>
-      <input class="form-control" id="passwd" type="password" v-model="passwd" placeholder="请输入密码">
-    </div>
-    <button class="btn btn-default">提交</button>
-  </form>
+  <div class="logo"></div>
+  <div class="container">
+    <h1>SAAS资源管理系统</h1>
+    <form name="loginForm" class="form-horizontal" novalidate @submit.prevent="submit(errors)">
+      <div class="form-group error-msg">
+        <span class="error" v-if="errCode!=='300003' && errCode!=='300001' && errCode!=='300004'">{{errMsg}}</span>
+      </div>
+      <div class="form-group" :class="{'has-error': errors.has('mobile')}" >
+          <input class="form-control" name="mobile" v-model="mobile" type="text" v-validate.mobile="{required: true, regex: /^1\d{10}/}"  placeholder="请输入你的手机号码" placeholder-fix autofocus>
+          <span class="error" v-if="errCode==='300003' || errCode==='300001'">{{errMsg}}</span>
+      </div>
+      <div class="form-group" :class="{'has-error': errors.has('pwd')}">
+          <input class="form-control" name="pwd" v-model="pwd" type="password" v-validate="{required: true}" placeholder="请输入你的密码" placeholder-fix>
+          <span class="error" v-if="errCode==='300004'">{{errMsg}}</span>
+      </div>
+      <div class="form-group">
+          <button class="btn btn-default" type="submit">登录</button>
+      </div>
+      <div class="form-group forget-pwd">
+        <a href="">忘记密码请与管理员联系</a>
+      </div>
+    </form>
+  </div>
 </div>

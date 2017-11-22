@@ -15,7 +15,10 @@
         <router-view></router-view>
     </div>
     <script type="text/javascript">
-       
+      <% if(htmlWebpackPlugin.options.siteInfo && htmlWebpackPlugin.options.NODE_ENV!=='DEV') {%>
+      window.CONFIG_SITE = "<%=htmlWebpackPlugin.options.siteInfo[htmlWebpackPlugin.options.NODE_ENV].local%>";
+      window.CONFIG_REMOTE = "<%=htmlWebpackPlugin.options.siteInfo[htmlWebpackPlugin.options.NODE_ENV].remote%>";
+      <% } %>
     </script>
     <% for(var o of htmlWebpackPlugin.options.dlls ){ %>
     <script src="./<%= o %>.js"></script>

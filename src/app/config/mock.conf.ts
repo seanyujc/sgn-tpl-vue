@@ -1,4 +1,4 @@
-import { IMockData } from "../../lib/sgn-resource/config";
+import { IMockData } from "../../lib/sg-resource/config";
 
 export const mockData: IMockData = {
   post: {

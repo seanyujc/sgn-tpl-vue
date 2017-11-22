@@ -1,7 +1,8 @@
-import { Env } from "../../lib/sgn-resource";
+import { Env, ISites } from "../../lib/sg-resource";
 
 declare var NODE_ENV: string;
 declare var PUBLIC_PATH: string;
+declare var SITE_INFO: string;
 
 export default class Common {
   static showMsg(msg = "123") {
@@ -16,6 +17,18 @@ export default class Common {
       env = Env.PRO;
     }
     return env;
+  }
+  static getSiteInfo(): ISites | void {
+    const siteInfo: any = SITE_INFO;
+    if (!siteInfo) {
+      return;
+    }
+    const o: any = {};
+    o[Env.DEV] = siteInfo.DEV;
+    o[Env.TEST] = siteInfo.TEST;
+    o[Env.UAT] = siteInfo.UAT;
+    o[Env.PRO] = siteInfo.PRO;
+    return o;
   }
   /**
    * 得到环境变量的配置

@@ -14,6 +14,7 @@ export interface ICommon {
    * @param method HTTP method (e.g. 'GET', 'POST', etc)
    */
   dealPath(apiKey: string, method: string): string;
+  upperFirst(str: string): string;
 }
 
 export interface ICommonConstructor {
@@ -59,6 +60,12 @@ export class Common implements ICommon {
 
   trim(s: string): string {
     return s.replace(/(^\s*)|(\s*$)/g, "");
+  }
+
+  upperFirst(str: string) {
+    const first = str.substr(0, 1).toLocaleUpperCase();
+    const surplus = str.substr(1, str.length);
+    return first + surplus;
   }
 
 }

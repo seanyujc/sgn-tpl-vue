@@ -5,6 +5,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "strictFunctionTypes": false,
+    "emitDecoratorMetadata": true,
     "strict": true,
     "module": "es2015",
     "moduleResolution": "node",
@@ -25,7 +26,8 @@
     "lib": [
       "dom",
       "es5",
-      "es2015.promise"
+      "es2015.promise",
+      "es2015.symbol"
     ]
   }
 }

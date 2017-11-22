@@ -8,6 +8,12 @@ export abstract class SGVFactory {
   static proxyHttp: IProxyHttp;
   static configAdapter: IConfigAdapter;
 
+  /**
+   * 谁使用谁传参创建
+   * @param apiConfig api配置
+   * @param serverConfig 服务器配置
+   * @param mockData 模拟数据配置
+   */
   static createConfigAdapter(apiConfig?: IApiConfig, serverConfig?: IServerConfig, mockData?: IMockData) {
     if (!this.configAdapter) {
       if (!!apiConfig && !!serverConfig && !!mockData) {

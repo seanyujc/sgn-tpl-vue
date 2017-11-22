@@ -1,3 +1,84 @@
-.loginPageContainor{
-  
+.page-module.loginPageContainor {
+  height: 100%;
+  min-width: 490px;
+  background: url("../../../assets/images/bg.png");
+  color: white;
+  font-size: 14px;
+  h1 {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .logo {
+    width: 118px;
+    height: 32px;
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    // background: url("../../../assets/images/logo-1.png") no-repeat center center;
+    background-size: 100%;
+  }
+  .container {
+    max-width: 490px;
+    min-width: 350px;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -60%);
+    form {
+      background-color: rgba(15, 10, 28, .15);
+      border-radius: 2px;
+      height: 306px;
+      padding-top: 46px;
+      margin: 0 -15px;
+      a {
+        color: white;
+      }
+      .form-group {
+        width: 350px;
+        height: 62px;
+        margin: 0 auto;
+        &.error-msg {
+          margin-bottom: 4px;
+          padding: 0 10px;
+          height: 20px;
+        }
+        &.forget-pwd {
+          text-align: right;
+          padding: 0 10px;
+        }
+        &.has-error {
+          input {
+            border: 1px solid #ec474e;
+          }
+        }
+        .error {
+          color: #ec474e;
+        }
+      }
+      input {
+        height: 42px;
+        border-radius: 2px;
+        border: 1px solid transparent;
+        background-color: white;
+        box-shadow: none;
+        &:-webkit-autofill {
+          -webkit-text-fill-color: #555;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+      }
+      button {
+        width: 100%;
+        background-color: #5d5cb2;
+        color: white;
+        border: none;
+        height: 40px;
+        &:active:focus,
+        &.btn:focus {
+          outline: none;
+        }
+      }
+    }
+  }
 }

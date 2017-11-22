@@ -1,4 +1,4 @@
-import { IProxyHttp } from "../../../lib/sgn-resource";
+import { IProxyHttp } from "../../../lib/sg-resource";
 import { MissionInfo } from "../domain";
 import { Services } from "../factory.serv";
 

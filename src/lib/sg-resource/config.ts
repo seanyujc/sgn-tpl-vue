@@ -4,6 +4,7 @@
 export const enum Env {
   DEV = 1,
   TEST,
+  UAT,
   PRO,
 }
 
@@ -13,7 +14,7 @@ export const enum Env {
 export interface ISite {
   local: string;
   remote: string;
-  appID: string;
+  appID?: string;
 }
 
 /**
@@ -38,6 +39,7 @@ export interface IApiConfig {
   hosts: IHosts;
   post: { [key: string]: string };
   get: { [key: string]: string };
+  serviceFactory: any;
 }
 
 /**
@@ -57,7 +59,7 @@ export interface IServerConfig {
   debug: boolean;
   protocol: string;
   publicPath: string;
-  sites: ISites;
+  sites: ISites | void;
   successCode: string;
   successCallback?: <T>(res: T, resolve: T | PromiseLike<T> | undefined, reject: any) => void;
   failCallback?: <T>(res: T, reject: any) => void;
@@ -72,6 +74,7 @@ export interface IConfigAdapter {
   readonly debug: boolean;
   readonly protocol: string;
   readonly hosts: IHosts;
+  readonly serviceFactory: any;
   readonly successCode: string;
   readonly isMock?: boolean;
   readonly mockData: IMockData;
@@ -108,6 +111,7 @@ export class ConfigAdapter implements IConfigAdapter {
   domain: string;
   localSite: string;
   entrance: string;
+  serviceFactory: any;
   jsSignUrl?: string;
   jsApiList?: string[] | undefined;
 
@@ -118,13 +122,14 @@ export class ConfigAdapter implements IConfigAdapter {
     this.debug = serverConfig.debug;
     this.protocol = serverConfig.protocol;
     this.hosts = apiConfig.hosts;
+    this.serviceFactory = apiConfig.serviceFactory;
     this.successCode = serverConfig.successCode;
     this.isMock = serverConfig.isMock;
     this.mockData = mockData;
-    this.curSite = serverConfig.sites[this.env];
+    this.curSite = !!serverConfig.sites ? serverConfig.sites[this.env] : { local: window.location.host, remote: window.location.host };
     this.domain = this.curSite.remote;
     this.localSite = this.protocol + "//" + this.curSite.local + serverConfig.publicPath;
-    this.entrance = !!serverConfig.wXOAuth ?
+    this.entrance = !!serverConfig.wXOAuth && !!this.curSite.appID ?
       this.protocol + this.URL_TPL.replace(/\{DOMAIN}/, this.curSite.remote).replace(/\{HOST_API}/, serverConfig.wXOAuth)
         .replace("APPID", this.curSite.appID) : "";
     this.jsSignUrl = !!serverConfig.wXJsSign ? "//" + this.curSite.remote + serverConfig.wXJsSign : undefined;

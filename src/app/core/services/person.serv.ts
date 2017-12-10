@@ -1,6 +1,7 @@
 import { IProxyHttp } from "../../../lib/sg-resource";
 import { MissionInfo } from "../domain";
 import { Services } from "../factory.serv";
+import { BaseService } from "./base.serv";
 
 export interface IPersonService {
   uploadPics(files: any[]): Promise<any>;
@@ -19,11 +20,10 @@ export function createPersonService(ctor: IPersonServiceConstructor): IPersonSer
   return new ctor();
 }
 
-export class PersonService implements IPersonService {
-  proxyHttp: IProxyHttp;
+export class PersonService extends BaseService implements IPersonService {
 
   constructor() {
-    this.proxyHttp = Services.createProxyHttp();
+    super();
   }
 
   login(mobile: string, pwd: string): Promise<any> {
